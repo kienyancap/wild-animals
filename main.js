@@ -177,7 +177,7 @@ function isCloseToFinish() {
 }
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("finishModal");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];

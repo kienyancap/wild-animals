@@ -49,11 +49,15 @@ canvas {
   
   /* Modal Content/Box */
   .modal-content {
+    font-size: 50px;
+    line-height: 30px;
+    color: #0070ad;
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 3px solid #0070ad;
+    border-radius: 8px;
+    width: 50%;
   }
 
   .modal img{
