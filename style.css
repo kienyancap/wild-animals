@@ -1,4 +1,8 @@
 .rewards {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    align-items: center;
     width: 1500;
     height: 50;
     background-color: #0070ad;
@@ -9,3 +13,31 @@ canvas {
     background-image: url('images/background-img-2.jpg');
     border: 1px solid #0070ad;
   }
+
+.fun {
+    color: #ffffff;
+  }
+    
+.modesty {
+    color: #ffffff;
+  }
+
+.boldness {
+    color: #ffffff;
+}
+
+.trust {
+    color: #ffffff;
+}
+
+.honesty {
+    color: #ffffff;
+}
+
+.freedom {
+    color: #ffffff;
+}
+
+.teamwork {
+    color: #ffffff;
+}
