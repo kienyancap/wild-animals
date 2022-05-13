@@ -55,19 +55,19 @@ function loadImage() {
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
     }
-    trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0005_freedom.jpg?w=500&quality=100';
+    freedom_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0005_freedom.jpg?w=500&quality=100';
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
     }
-    trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
+    fun_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
     }
-    trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
+    modesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
     }
-    trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
+    teamSpirit_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
     }
@@ -77,13 +77,13 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
-    ctx.drawImage(honesty_image, 150, 250, 50, 55);
-    ctx.drawImage(boldness_image, 400, 200, 50, 50);
-    ctx.drawImage(trust_image, 240, 200, 50, 50);
-    ctx.drawImage(freedom_image, 250, 220, 50, 50);
-    ctx.drawImage(fun_image, 20, 20, 50, 50);
-    ctx.drawImage(modesty_image, 20, 20, 50, 50);
-    ctx.drawImage(teamSpirit_image, 20, 20, 50, 50);
+    ctx.drawImage(honesty_image, 120, 420, 50, 55);
+    ctx.drawImage(boldness_image, 700, 200, 50, 50);
+    ctx.drawImage(trust_image, 240, 460, 50, 50);
+    ctx.drawImage(freedom_image, 250, 700, 50, 50);
+    ctx.drawImage(fun_image, 400, 240, 50, 50);
+    ctx.drawImage(modesty_image, 120, 230, 50, 50);
+    ctx.drawImage(teamSpirit_image, 620, 200, 50, 50);
 
 }
 
