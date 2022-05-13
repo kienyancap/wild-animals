@@ -3,10 +3,9 @@
     flex-direction:row;
     justify-content: space-evenly;
     align-items: center;
-    width: 1440;
-    height: 50;
-    background-color: #0070ad;
-    border: 1px solid #0070ad;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 8px;
 }
 img{
     width:30px;
@@ -17,12 +16,13 @@ canvas {
     background-image: url('images/background-img-2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    border: 1px solid #0070ad;
+    border-radius: 0 0 8px 8px;
   }
 
 .value{
     font-size: 20px;
     line-height: 30px;
+    color: #0070ad;
 }
 .value img{
     display: none;
@@ -98,3 +98,9 @@ canvas {
     text-decoration: none;
     cursor: pointer;
   }
+.wrapper {
+    border: 3px solid #0070ad;
+    border-radius: 8px;
+    width: 1440px;
+    height: 1010px;
+}
