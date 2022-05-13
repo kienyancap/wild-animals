@@ -20,7 +20,13 @@ let frameCount = 0;
 let positionX = 0;
 let positionY = 0;
 let img = new Image();
+let honesty_image = new Image();
+let boldness_image = new Image();
 let trust_image = new Image();
+let freedom_image = new Image();
+let fun_image = new Image();
+let modesty_image = new Image();
+let teamSpirit_image = new Image();
 
 window.addEventListener('keydown', keyDownListener);
 function keyDownListener(event) {
@@ -37,6 +43,10 @@ function loadImage() {
     img.onload = function() {
         window.requestAnimationFrame(gameLoop);
     };
+    honesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0003_honesty.jpg?w=500&quality=100';
+    honesty_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    };
     trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0000_trust-e1631877739580.jpg?w=768&quality=100';
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
@@ -48,6 +58,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
     ctx.drawImage(trust_image, 50, 50, 50, 50);
+    ctx.drawImage(honesty_image, 20, 20, 50, 50);
 
 }
 
