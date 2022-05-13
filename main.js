@@ -107,9 +107,17 @@ function isCloseToValue() {
 function grab() {
     const index = isCloseToValue();
     const grabbedValue = document.getElementById(`value${index+1}`);
-    grabbedValue.style.color =  'rgb(128 195 217)';
-    grabbedValue.classList.add('achieved');
-    achievements.push(images[index]);
+    if (grabbedValue){
+        grabbedValue.style.color =  'rgb(128 195 217)';
+        grabbedValue.classList.add('achieved');
+        achievements.push(images[index]);
+        modal.style.display = "block";
+        let text = images[index].dialog.text
+        let person=images[index].dialog.src
+        let modalText = document.getElementById("modalText");
+        console.log(modalText);
+        modalText.innerHTML = `<img src="${person}"/>${text}`;
+    }
 
 }
 
