@@ -21,6 +21,8 @@ let positionX = 0;
 let positionY = 0;
 let img = new Image();
 let trust_image = new Image();
+let trustPositionX=50;
+let trustPositionY=50;
 
 window.addEventListener('keydown', keyDownListener);
 function keyDownListener(event) {
@@ -47,16 +49,33 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
-    ctx.drawImage(trust_image, 50, 50, 50, 50);
+    ctx.drawImage(trust_image, trustPositionX, trustPositionY, 50, 50);
 
 }
 
 loadImage();
 
+function isCloseToValue(){
+    if (Math.abs(trustPositionX-positionX)<50 && Math.abs(trustPositionY-positionY)<50){
+        console.log('grab')
+
+    } else {
+       console.log('you are too far from the object');
+    }
+}
+
+function grab(){
+   isCloseToValue()
+}
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let hasMoved = false;
+
+    if (keyPresses.q) {
+        grab();
+    }
 
     if (keyPresses.w) {
         moveCharacter(0, -MOVEMENT_SPEED, FACING_UP);
