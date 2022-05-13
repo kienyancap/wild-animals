@@ -48,8 +48,14 @@ freedom_image.positionY = 265;
 fun_image.positionY = 470;
 modesty_image.positionY = 240;
 teamSpirit_image.positionY = 195;
-let trustPositionX = 50;
-let trustPositionY = 50;
+honesty_image.dialog = { src:'./images/Kilg.png', text: 'Well done!'};
+boldness_image.dialog = { src:'./images/Bosklopper.png', text: 'Nice!'};
+trust_image.dialog = { src:'./images/Berkhout.png', text: 'Well done!'};
+freedom_image.dialog = { src:'./images/Wiel.png', text: 'Well done!'};
+fun_image.dialog = { src:'./images/Syed.png', text: 'Well done!'};
+modesty_image.dialog = { src:'./images/Jacobs.png', text: 'Well done!'};
+teamSpirit_image.dialog = { src:'./images/Wiel.png', text: 'You are in a FE team now!'};
+
 let images = [
     fun_image,
     modesty_image,
