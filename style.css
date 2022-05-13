@@ -8,11 +8,30 @@
     background-color: #0070ad;
     border: 1px solid #0070ad;
 }
-
+img{
+    width:30px;
+    height: 30px;
+    margin-right:15px;
+}
 canvas {
     background-image: url('images/background-img-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     border: 1px solid #0070ad;
   }
+
+.value{
+    font-size: 20px;
+    line-height: 30px;
+}
+.value img{
+    display: none;
+    float:left;
+}
+
+.value.achieved img{
+    display: inline-block;
+}
 
 .fun {
     color: #ffffff;

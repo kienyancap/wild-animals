@@ -47,8 +47,6 @@ freedom_image.positionY = 580;
 fun_image.positionY = 500;
 modesty_image.positionY = 350;
 teamSpirit_image.positionY = 550;
-let trustPositionX = 50;
-let trustPositionY = 50;
 let images = [
     fun_image,
     modesty_image,
@@ -94,7 +92,9 @@ function isCloseToValue() {
 }
 function grab() {
     const index = isCloseToValue();
-    document.getElementById(`value${index+1}`).style.color =  'red';
+    const grabbedValue = document.getElementById(`value${index+1}`);
+    grabbedValue.style.color =  'rgb(128 195 217)';
+    grabbedValue.classList.add('achieved');
     achievements.push(images[index]);
 }
 function gameLoop() {
