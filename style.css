@@ -1,0 +1,11 @@
+.rewards {
+    width: 1500;
+    height: 50;
+    background-color: #0070ad;
+    border: 1px solid #0070ad;
+}
+
+canvas {
+    background-color: #66c1f1;
+    border: 1px solid #0070ad;
+  }
