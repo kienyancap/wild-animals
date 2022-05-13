@@ -1,0 +1,11 @@
+.rewards {
+    width: 1500;
+    height: 50;
+    background-color: #0070ad;
+    border: 1px solid #0070ad;
+}
+
+canvas {
+    background-image: url('images/background-img-2.jpg');
+    border: 1px solid #0070ad;
+  }

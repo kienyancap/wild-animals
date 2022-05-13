@@ -20,7 +20,13 @@ let frameCount = 0;
 let positionX = 0;
 let positionY = 0;
 let img = new Image();
+let honesty_image = new Image();
+let boldness_image = new Image();
 let trust_image = new Image();
+let freedom_image = new Image();
+let fun_image = new Image();
+let modesty_image = new Image();
+let teamSpirit_image = new Image();
 let trustPositionX=50;
 let trustPositionY=50;
 
@@ -39,7 +45,31 @@ function loadImage() {
     img.onload = function() {
         window.requestAnimationFrame(gameLoop);
     };
+    honesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0003_honesty.jpg?w=500&quality=100';
+    honesty_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    };
+    boldness_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0006_Boldness-e1631877615851.jpg?w=500&quality=100';
+    honesty_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    };
     trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0000_trust-e1631877739580.jpg?w=768&quality=100';
+    trust_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    }
+    freedom_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0005_freedom.jpg?w=500&quality=100';
+    trust_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    }
+    fun_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
+    trust_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    }
+    modesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
+    trust_image.onload = function(){
+        window.requestAnimationFrame(gameLoop);
+    }
+    teamSpirit_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
     trust_image.onload = function(){
         window.requestAnimationFrame(gameLoop);
     }
@@ -49,7 +79,13 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
-    ctx.drawImage(trust_image, trustPositionX, trustPositionY, 50, 50);
+    ctx.drawImage(honesty_image, 120, 420, 50, 55);
+    ctx.drawImage(boldness_image, 700, 200, 50, 50);
+    ctx.drawImage(trust_image, 240, 460, 50, 50);
+    ctx.drawImage(freedom_image, 250, 700, 50, 50);
+    ctx.drawImage(fun_image, 400, 240, 50, 50);
+    ctx.drawImage(modesty_image, 120, 230, 50, 50);
+    ctx.drawImage(teamSpirit_image, 620, 200, 50, 50);
 
 }
 
