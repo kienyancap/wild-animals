@@ -16,8 +16,8 @@ let keyPresses = {};
 let currentDirection = FACING_DOWN;
 let currentLoopIndex = 0;
 let frameCount = 0;
-let positionX = 0;
-let positionY = 0;
+let positionX = 10;
+let positionY = 510;
 let img = new Image();
 let honesty_image = new Image();
 let boldness_image = new Image();
@@ -100,7 +100,9 @@ function isCloseToValue() {
 }
 function grab() {
     const index = isCloseToValue();
-    document.getElementById(`value${index+1}`).style.color =  'red';
+    const grabbedValue = document.getElementById(`value${index+1}`);
+    grabbedValue.style.color =  'rgb(128 195 217)';
+    grabbedValue.classList.add('achieved');
     achievements.push(images[index]);
 }
 function gameLoop() {
