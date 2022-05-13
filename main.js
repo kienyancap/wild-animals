@@ -27,81 +27,81 @@ let freedom_image = new Image();
 let fun_image = new Image();
 let modesty_image = new Image();
 let teamSpirit_image = new Image();
-let trustPositionX=50;
-let trustPositionY=50;
+honesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0003_honesty.jpg?w=500&quality=100';
+boldness_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0006_Boldness-e1631877615851.jpg?w=500&quality=100';
+trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0000_trust-e1631877739580.jpg?w=768&quality=100';
+freedom_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0005_freedom.jpg?w=500&quality=100';
+fun_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
+modesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
+teamSpirit_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
+honesty_image.positionX = 100;
+boldness_image.positionX = 150;
+trust_image.positionX = 200;
+freedom_image.positionX = 300;
+fun_image.positionX = 75;
+modesty_image.positionX = 0;
+teamSpirit_image.positionX = 400;
+honesty_image.positionY = 80;
+boldness_image.positionY = 120;
+trust_image.positionY = 200;
+freedom_image.positionY = 300;
+fun_image.positionY = 500;
+modesty_image.positionY = 600;
+teamSpirit_image.positionY = 50;
+let trustPositionX = 50;
+let trustPositionY = 50;
+let images = [
+    honesty_image,
+    boldness_image,
+    trust_image,
+    freedom_image,
+    fun_image,
+    modesty_image,
+    teamSpirit_image,
+]
 
 window.addEventListener('keydown', keyDownListener);
+
 function keyDownListener(event) {
     keyPresses[event.key] = true;
 }
 
 window.addEventListener('keyup', keyUpListener);
+
 function keyUpListener(event) {
     keyPresses[event.key] = false;
 }
 
 function loadImage() {
     img.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
-    img.onload = function() {
+    img.onload = function () {
         window.requestAnimationFrame(gameLoop);
     };
-    honesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0003_honesty.jpg?w=500&quality=100';
-    honesty_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    };
-    boldness_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0006_Boldness-e1631877615851.jpg?w=500&quality=100';
-    honesty_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    };
-    trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0000_trust-e1631877739580.jpg?w=768&quality=100';
-    trust_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    }
-    freedom_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0005_freedom.jpg?w=500&quality=100';
-    trust_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    }
-    fun_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
-    trust_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    }
-    modesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
-    trust_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    }
-    teamSpirit_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
-    trust_image.onload = function(){
-        window.requestAnimationFrame(gameLoop);
-    }
 }
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
-    ctx.drawImage(honesty_image, 120, 420, 50, 55);
-    ctx.drawImage(boldness_image, 700, 200, 50, 50);
-    ctx.drawImage(trust_image, 240, 460, 50, 50);
-    ctx.drawImage(freedom_image, 250, 700, 50, 50);
-    ctx.drawImage(fun_image, 400, 240, 50, 50);
-    ctx.drawImage(modesty_image, 120, 230, 50, 50);
-    ctx.drawImage(teamSpirit_image, 620, 200, 50, 50);
+    for (const image of images) {
+        ctx.drawImage(image, image.positionX, image.positionY, 50, 50);
+    }
 
 }
 
 loadImage();
 
-function isCloseToValue(){
-    if (Math.abs(trustPositionX-positionX)<50 && Math.abs(trustPositionY-positionY)<50){
+function isCloseToValue() {
+    if (Math.abs(trustPositionX - positionX) < 50 && Math.abs(trustPositionY - positionY) < 50) {
         console.log('grab')
 
     } else {
-       console.log('you are too far from the object');
+        console.log('you are too far from the object');
     }
 }
 
-function grab(){
-   isCloseToValue()
+function grab() {
+    isCloseToValue()
 }
 
 function gameLoop() {
