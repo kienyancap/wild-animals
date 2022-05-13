@@ -48,8 +48,6 @@ freedom_image.positionY = 300;
 fun_image.positionY = 500;
 modesty_image.positionY = 600;
 teamSpirit_image.positionY = 50;
-let trustPositionX = 50;
-let trustPositionY = 50;
 let images = [
     honesty_image,
     boldness_image,
@@ -92,16 +90,19 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
 loadImage();
 
 function isCloseToValue() {
-    if (Math.abs(trustPositionX - positionX) < 50 && Math.abs(trustPositionY - positionY) < 50) {
-        console.log('grab')
+    for (let i = 0; i < images.length; i++) {
 
-    } else {
-        console.log('you are too far from the object');
+        if (Math.abs(images[i].positionX - positionX) < 50 && Math.abs(images[i].positionY - positionY) < 50) {
+            return i
+        }
     }
+
+    return false
 }
 
 function grab() {
-    isCloseToValue()
+    console.log(isCloseToValue());
+
 }
 
 function gameLoop() {
