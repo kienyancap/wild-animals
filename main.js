@@ -33,20 +33,22 @@ freedom_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandv
 fun_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
 modesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
 teamSpirit_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
-honesty_image.positionX = 100;
-boldness_image.positionX = 150;
-trust_image.positionX = 200;
-freedom_image.positionX = 300;
-fun_image.positionX = 75;
-modesty_image.positionX = 0;
-teamSpirit_image.positionX = 400;
-honesty_image.positionY = 80;
-boldness_image.positionY = 120;
-trust_image.positionY = 200;
-freedom_image.positionY = 300;
+honesty_image.positionX = 40;
+boldness_image.positionX = 900;
+trust_image.positionX = 400;
+freedom_image.positionX = 520;
+fun_image.positionX = 760;
+modesty_image.positionX = 1000;
+teamSpirit_image.positionX = 1220;
+honesty_image.positionY = 450;
+boldness_image.positionY = 400;
+trust_image.positionY = 510;
+freedom_image.positionY = 580;
 fun_image.positionY = 500;
-modesty_image.positionY = 600;
-teamSpirit_image.positionY = 50;
+modesty_image.positionY = 350;
+teamSpirit_image.positionY = 550;
+let trustPositionX = 50;
+let trustPositionY = 50;
 let images = [
     fun_image,
     modesty_image,
