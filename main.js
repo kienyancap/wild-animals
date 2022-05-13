@@ -9,8 +9,7 @@ const FACING_UP = 1;
 const FACING_LEFT = 2;
 const FACING_RIGHT = 3;
 const FRAME_LIMIT = 12;
-const MOVEMENT_SPEED = 1.5;
-
+const MOVEMENT_SPEED = 2;
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let keyPresses = {};
@@ -56,6 +55,8 @@ fun_image.dialog = { src:'./images/Syed.png', text: 'Well done!'};
 modesty_image.dialog = { src:'./images/Jacobs.png', text: 'Well done!'};
 teamSpirit_image.dialog = { src:'./images/Wiel.png', text: 'You are in a FE team now!'};
 
+let trustPositionX = 50;
+let trustPositionY = 50;
 let images = [
     fun_image,
     modesty_image,
@@ -89,6 +90,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
             ctx.drawImage(images[image], images[image].positionX, images[image].positionY, 50, 50);
         }
     }
+    ctx.drawImage(finish_image, finish_image.positionX, finish_image.positionY, 50, 50);
 }
 loadImage();
 function isCloseToValue() {
@@ -123,6 +125,9 @@ function gameLoop() {
         moveCharacter(MOVEMENT_SPEED, 0, FACING_RIGHT);
         hasMoved = true;
     }
+    if (keyPresses.e) {
+        finish();
+    }
     if (hasMoved) {
         frameCount++;
         if (frameCount >= FRAME_LIMIT) {
@@ -149,4 +154,34 @@ function moveCharacter(deltaX, deltaY, direction) {
         positionY += deltaY;
     }
     currentDirection = direction;
+}
+
+function isCloseToFinish() {
+        if (Math.abs(finish_image.positionX - positionX) < 50 && Math.abs(finish_image.positionY - positionY) < 50) {
+            return true
+        }
+    return false
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+function finish() {
+    const index = isCloseToFinish();
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
