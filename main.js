@@ -9,7 +9,8 @@ const FACING_UP = 1;
 const FACING_LEFT = 2;
 const FACING_RIGHT = 3;
 const FRAME_LIMIT = 12;
-const MOVEMENT_SPEED = 2;
+const MOVEMENT_SPEED = 1.5;
+
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let keyPresses = {};
@@ -26,6 +27,7 @@ let freedom_image = new Image();
 let fun_image = new Image();
 let modesty_image = new Image();
 let teamSpirit_image = new Image();
+let finish_image = new Image();
 honesty_image.src = './images/honesty.png';
 boldness_image.src = './images/boldness.png';
 trust_image.src = './images/trust.png';
@@ -33,20 +35,23 @@ freedom_image.src = './images/freedom.png';
 fun_image.src = './images/fun.png';
 modesty_image.src = './images/modesty.png';
 teamSpirit_image.src = './images/team-spirit.png';
-honesty_image.positionX = 230;
+finish_image.src = 'images/logo.jpg';
+honesty_image.positionX = 40;
 boldness_image.positionX = 765;
 trust_image.positionX = 370;
-freedom_image.positionX = 120;
+freedom_image.positionX = 330;
 fun_image.positionX = 945;
-modesty_image.positionX = 745;
+modesty_image.positionX = 950;
 teamSpirit_image.positionX = 1275;
-honesty_image.positionY = 65;
+finish_image.positionX = 630;
+honesty_image.positionY = 450;
 boldness_image.positionY = 320;
 trust_image.positionY = 400;
-freedom_image.positionY = 810;
+freedom_image.positionY = 265;
 fun_image.positionY = 470;
-modesty_image.positionY = 680;
+modesty_image.positionY = 240;
 teamSpirit_image.positionY = 195;
+finish_image.positionY = 540;
 honesty_image.dialog = { src:'./images/Kilg.png', text: 'Well done!'};
 boldness_image.dialog = { src:'./images/Bosklopper.png', text: 'Nice!'};
 trust_image.dialog = { src:'./images/Berkhout.png', text: 'Well done!'};
@@ -55,8 +60,6 @@ fun_image.dialog = { src:'./images/Syed.png', text: 'Well done!'};
 modesty_image.dialog = { src:'./images/Jacobs.png', text: 'Well done!'};
 teamSpirit_image.dialog = { src:'./images/Wiel.png', text: 'You are in a FE team now!'};
 
-let trustPositionX = 50;
-let trustPositionY = 50;
 let images = [
     fun_image,
     modesty_image,
@@ -104,10 +107,20 @@ function isCloseToValue() {
 function grab() {
     const index = isCloseToValue();
     const grabbedValue = document.getElementById(`value${index+1}`);
-    grabbedValue.style.color =  'rgb(128 195 217)';
-    grabbedValue.classList.add('achieved');
-    achievements.push(images[index]);
+    if (grabbedValue){
+        grabbedValue.style.color =  'rgb(128 195 217)';
+        grabbedValue.classList.add('achieved');
+        achievements.push(images[index]);
+        modal.style.display = "block";
+        let text = images[index].dialog.text
+        let person=images[index].dialog.src
+        let modalText = document.getElementById("modalText");
+        console.log(modalText);
+        modalText.innerHTML = `<img src="${person}"/>${text}`;
+    }
+
 }
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let hasMoved = false;
@@ -164,7 +177,7 @@ function isCloseToFinish() {
 }
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("finishModal");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
