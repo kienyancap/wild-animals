@@ -10,7 +10,6 @@ const FACING_LEFT = 2;
 const FACING_RIGHT = 3;
 const FRAME_LIMIT = 12;
 const MOVEMENT_SPEED = 1;
-
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let keyPresses = {};
@@ -49,71 +48,56 @@ fun_image.positionY = 500;
 modesty_image.positionY = 600;
 teamSpirit_image.positionY = 50;
 let images = [
-    honesty_image,
-    boldness_image,
-    trust_image,
-    freedom_image,
     fun_image,
     modesty_image,
+    boldness_image,
+    trust_image,
+    honesty_image,
+    freedom_image,
     teamSpirit_image,
 ]
-
+let achievements = [];
 window.addEventListener('keydown', keyDownListener);
-
 function keyDownListener(event) {
     keyPresses[event.key] = true;
 }
-
 window.addEventListener('keyup', keyUpListener);
-
 function keyUpListener(event) {
     keyPresses[event.key] = false;
 }
-
 function loadImage() {
     img.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
     img.onload = function () {
         window.requestAnimationFrame(gameLoop);
     };
 }
-
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
-    for (const image of images) {
-        ctx.drawImage(image, image.positionX, image.positionY, 50, 50);
+    for (const image in images) {
+        if (!achievements.includes(images[image])){
+            ctx.drawImage(images[image], images[image].positionX, images[image].positionY, 50, 50);
+        }
     }
-
 }
-
 loadImage();
-
 function isCloseToValue() {
     for (let i = 0; i < images.length; i++) {
-
         if (Math.abs(images[i].positionX - positionX) < 50 && Math.abs(images[i].positionY - positionY) < 50) {
             return i
         }
     }
-
     return false
 }
-
 function grab() {
-    console.log(isCloseToValue());
-
+    const index = isCloseToValue();
+    document.getElementById(`value${index+1}`).style.color =  'red';
+    achievements.push(images[index]);
 }
-
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     let hasMoved = false;
-
-    if (keyPresses.q) {
-        grab();
-    }
-
     if (keyPresses.w) {
         moveCharacter(0, -MOVEMENT_SPEED, FACING_UP);
         hasMoved = true;
@@ -121,7 +105,6 @@ function gameLoop() {
         moveCharacter(0, MOVEMENT_SPEED, FACING_DOWN);
         hasMoved = true;
     }
-
     if (keyPresses.a) {
         moveCharacter(-MOVEMENT_SPEED, 0, FACING_LEFT);
         hasMoved = true;
@@ -129,7 +112,6 @@ function gameLoop() {
         moveCharacter(MOVEMENT_SPEED, 0, FACING_RIGHT);
         hasMoved = true;
     }
-
     if (hasMoved) {
         frameCount++;
         if (frameCount >= FRAME_LIMIT) {
@@ -139,16 +121,15 @@ function gameLoop() {
                 currentLoopIndex = 0;
             }
         }
+    } else if (keyPresses.q) {
+        grab();
     }
-
     if (!hasMoved) {
         currentLoopIndex = 0;
     }
-
     drawFrame(CYCLE_LOOP[currentLoopIndex], currentDirection, positionX, positionY);
     window.requestAnimationFrame(gameLoop);
 }
-
 function moveCharacter(deltaX, deltaY, direction) {
     if (positionX + deltaX > 0 && positionX + SCALED_WIDTH + deltaX < canvas.width) {
         positionX += deltaX;
