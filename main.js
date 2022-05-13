@@ -52,13 +52,13 @@ fun_image.positionY = 470;
 modesty_image.positionY = 240;
 teamSpirit_image.positionY = 195;
 finish_image.positionY = 540;
-honesty_image.dialog = { src:'./images/Kilg.png', text: 'Well done!'};
-boldness_image.dialog = { src:'./images/Bosklopper.png', text: 'Nice!'};
-trust_image.dialog = { src:'./images/Berkhout.png', text: 'Well done!'};
-freedom_image.dialog = { src:'./images/Wiel.png', text: 'Well done!'};
-fun_image.dialog = { src:'./images/Syed.png', text: 'Well done!'};
-modesty_image.dialog = { src:'./images/Jacobs.png', text: 'Well done!'};
-teamSpirit_image.dialog = { src:'./images/Wiel.png', text: 'You are in a FE team now!'};
+honesty_image.dialog = {src: './images/Kilg.png', text: 'Well done!'};
+boldness_image.dialog = {src: './images/Bosklopper.png', text: 'Nice!'};
+trust_image.dialog = {src: './images/Berkhout.png', text: 'You are close!'};
+freedom_image.dialog = {src: './images/Anna.png', text: 'Another value is in your collection!'};
+fun_image.dialog = {src: './images/Syed.png', text: 'YEAH!!!!!'};
+modesty_image.dialog = {src: './images/Jacobs.png', text: 'You nailed it!'};
+teamSpirit_image.dialog = {src: './images/Wiel.png', text: 'You are in a FE team now!'};
 
 let images = [
     fun_image,
@@ -71,31 +71,38 @@ let images = [
 ]
 let achievements = [];
 window.addEventListener('keydown', keyDownListener);
+
 function keyDownListener(event) {
     keyPresses[event.key] = true;
 }
+
 window.addEventListener('keyup', keyUpListener);
+
 function keyUpListener(event) {
     keyPresses[event.key] = false;
 }
+
 function loadImage() {
     img.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
     img.onload = function () {
         window.requestAnimationFrame(gameLoop);
     };
 }
+
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
     for (const image in images) {
-        if (!achievements.includes(images[image])){
+        if (!achievements.includes(images[image])) {
             ctx.drawImage(images[image], images[image].positionX, images[image].positionY, 50, 50);
         }
     }
     ctx.drawImage(finish_image, finish_image.positionX, finish_image.positionY, 50, 50);
 }
+
 loadImage();
+
 function isCloseToValue() {
     for (let i = 0; i < images.length; i++) {
         if (Math.abs(images[i].positionX - positionX) < 50 && Math.abs(images[i].positionY - positionY) < 50) {
@@ -104,18 +111,20 @@ function isCloseToValue() {
     }
     return false
 }
+
 function grab() {
     const index = isCloseToValue();
-    const grabbedValue = document.getElementById(`value${index+1}`);
-    if (grabbedValue){
-        grabbedValue.style.color =  'rgb(128 195 217)';
-        grabbedValue.classList.add('achieved');
-        achievements.push(images[index]);
+    const grabbedValue = document.getElementById(`value${index + 1}`);
+
+    grabbedValue.style.color = 'rgb(128 195 217)';
+    grabbedValue.classList.add('achieved');
+    achievements.push(images[index]);
+    console.log(index);
+    if (typeof index === 'number'){
         modal.style.display = "block";
         let text = images[index].dialog.text
-        let person=images[index].dialog.src
+        let person = images[index].dialog.src
         let modalText = document.getElementById("modalText");
-        console.log(modalText);
         modalText.innerHTML = `<img src="${person}"/>${text}`;
     }
 
@@ -124,6 +133,10 @@ function grab() {
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let hasMoved = false;
+
+    if (keyPresses.q) {
+        grab();
+    }
     if (keyPresses.w) {
         moveCharacter(0, -MOVEMENT_SPEED, FACING_UP);
         hasMoved = true;
@@ -138,9 +151,9 @@ function gameLoop() {
         moveCharacter(MOVEMENT_SPEED, 0, FACING_RIGHT);
         hasMoved = true;
     }
-    if (keyPresses.e) {
-        finish();
-    }
+    // if (keyPresses.e) {
+    //     finish();
+    // }
     if (hasMoved) {
         frameCount++;
         if (frameCount >= FRAME_LIMIT) {
@@ -150,8 +163,6 @@ function gameLoop() {
                 currentLoopIndex = 0;
             }
         }
-    } else if (keyPresses.q) {
-        grab();
     }
     if (!hasMoved) {
         currentLoopIndex = 0;
@@ -159,6 +170,7 @@ function gameLoop() {
     drawFrame(CYCLE_LOOP[currentLoopIndex], currentDirection, positionX, positionY);
     window.requestAnimationFrame(gameLoop);
 }
+
 function moveCharacter(deltaX, deltaY, direction) {
     if (positionX + deltaX > 0 && positionX + SCALED_WIDTH + deltaX < canvas.width) {
         positionX += deltaX;
@@ -170,9 +182,9 @@ function moveCharacter(deltaX, deltaY, direction) {
 }
 
 function isCloseToFinish() {
-        if (Math.abs(finish_image.positionX - positionX) < 50 && Math.abs(finish_image.positionY - positionY) < 50) {
-            return true
-        }
+    if (Math.abs(finish_image.positionX - positionX) < 50 && Math.abs(finish_image.positionY - positionY) < 50) {
+        return true
+    }
     return false
 }
 
@@ -185,16 +197,18 @@ var span = document.getElementsByClassName("close")[0];
 function finish() {
     const index = isCloseToFinish();
     modal.style.display = "block";
+    let modalText = document.getElementById("modalText");
+    modalText.innerHTML = `FINISH!`;
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span.onclick = function () {
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
