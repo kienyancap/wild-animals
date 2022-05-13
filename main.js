@@ -9,12 +9,8 @@ const FACING_UP = 1;
 const FACING_LEFT = 2;
 const FACING_RIGHT = 3;
 const FRAME_LIMIT = 12;
-<<<<<<< HEAD
 const MOVEMENT_SPEED = 1.5;
 
-=======
-const MOVEMENT_SPEED = 1;
->>>>>>> 3f9e16cb9b6e359b671a6efd79728b340eca059d
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let keyPresses = {};
@@ -31,13 +27,13 @@ let freedom_image = new Image();
 let fun_image = new Image();
 let modesty_image = new Image();
 let teamSpirit_image = new Image();
-honesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0003_honesty.jpg?w=500&quality=100';
-boldness_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0006_Boldness-e1631877615851.jpg?w=500&quality=100';
-trust_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0000_trust-e1631877739580.jpg?w=768&quality=100';
-freedom_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0005_freedom.jpg?w=500&quality=100';
-fun_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0004_fun.jpg?w=500&quality=100';
-modesty_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0002_modesty.jpg?w=500&quality=100';
-teamSpirit_image.src = 'https://www.capgemini.com/wp-content/uploads/2021/09/brandvalues_0001_team-spirit.jpg?w=500&quality=100';
+honesty_image.src = './images/honesty.png';
+boldness_image.src = './images/boldness.png';
+trust_image.src = './images/trust.png';
+freedom_image.src = './images/freedom.png';
+fun_image.src = './images/fun.png';
+modesty_image.src = './images/modesty.png';
+teamSpirit_image.src = './images/team-spirit.png';
 honesty_image.positionX = 40;
 boldness_image.positionX = 765;
 trust_image.positionX = 370;
@@ -46,7 +42,6 @@ fun_image.positionX = 945;
 modesty_image.positionX = 950;
 teamSpirit_image.positionX = 1275;
 honesty_image.positionY = 450;
-<<<<<<< HEAD
 boldness_image.positionY = 320;
 trust_image.positionY = 400;
 freedom_image.positionY = 265;
@@ -55,14 +50,6 @@ modesty_image.positionY = 240;
 teamSpirit_image.positionY = 195;
 let trustPositionX = 50;
 let trustPositionY = 50;
-=======
-boldness_image.positionY = 400;
-trust_image.positionY = 510;
-freedom_image.positionY = 580;
-fun_image.positionY = 500;
-modesty_image.positionY = 350;
-teamSpirit_image.positionY = 550;
->>>>>>> 3f9e16cb9b6e359b671a6efd79728b340eca059d
 let images = [
     fun_image,
     modesty_image,
