@@ -33,6 +33,34 @@ canvas {
     display: inline-block;
 }
 
+.fun {
+    color: #0070ad;
+  }
+    
+.modesty {
+    color: #0070ad;
+  }
+
+.boldness {
+    color: #0070ad;
+}
+
+.trust {
+    color: #0070ad;
+}
+
+.honesty {
+    color: #0070ad;
+}
+
+.freedom {
+    color: #0070ad;
+}
+
+.teamwork {
+    color: #0070ad;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
