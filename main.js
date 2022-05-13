@@ -9,8 +9,12 @@ const FACING_UP = 1;
 const FACING_LEFT = 2;
 const FACING_RIGHT = 3;
 const FRAME_LIMIT = 12;
+<<<<<<< HEAD
 const MOVEMENT_SPEED = 1.5;
 
+=======
+const MOVEMENT_SPEED = 1;
+>>>>>>> 3f9e16cb9b6e359b671a6efd79728b340eca059d
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 let keyPresses = {};
@@ -42,6 +46,7 @@ fun_image.positionX = 945;
 modesty_image.positionX = 950;
 teamSpirit_image.positionX = 1275;
 honesty_image.positionY = 450;
+<<<<<<< HEAD
 boldness_image.positionY = 320;
 trust_image.positionY = 400;
 freedom_image.positionY = 265;
@@ -50,72 +55,67 @@ modesty_image.positionY = 240;
 teamSpirit_image.positionY = 195;
 let trustPositionX = 50;
 let trustPositionY = 50;
+=======
+boldness_image.positionY = 400;
+trust_image.positionY = 510;
+freedom_image.positionY = 580;
+fun_image.positionY = 500;
+modesty_image.positionY = 350;
+teamSpirit_image.positionY = 550;
+>>>>>>> 3f9e16cb9b6e359b671a6efd79728b340eca059d
 let images = [
-    honesty_image,
-    boldness_image,
-    trust_image,
-    freedom_image,
     fun_image,
     modesty_image,
+    boldness_image,
+    trust_image,
+    honesty_image,
+    freedom_image,
     teamSpirit_image,
 ]
-
+let achievements = [];
 window.addEventListener('keydown', keyDownListener);
-
 function keyDownListener(event) {
     keyPresses[event.key] = true;
 }
-
 window.addEventListener('keyup', keyUpListener);
-
 function keyUpListener(event) {
     keyPresses[event.key] = false;
 }
-
 function loadImage() {
     img.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
     img.onload = function () {
         window.requestAnimationFrame(gameLoop);
     };
 }
-
 function drawFrame(frameX, frameY, canvasX, canvasY) {
     ctx.drawImage(img,
         frameX * WIDTH, frameY * HEIGHT, WIDTH, HEIGHT,
         canvasX, canvasY, SCALED_WIDTH, SCALED_HEIGHT);
-    for (const image of images) {
-        ctx.drawImage(image, image.positionX, image.positionY, 50, 50);
+    for (const image in images) {
+        if (!achievements.includes(images[image])){
+            ctx.drawImage(images[image], images[image].positionX, images[image].positionY, 50, 50);
+        }
     }
-
 }
-
 loadImage();
-
 function isCloseToValue() {
     for (let i = 0; i < images.length; i++) {
-
         if (Math.abs(images[i].positionX - positionX) < 50 && Math.abs(images[i].positionY - positionY) < 50) {
             return i
         }
     }
-
     return false
 }
-
 function grab() {
-    console.log(isCloseToValue());
-
+    const index = isCloseToValue();
+    const grabbedValue = document.getElementById(`value${index+1}`);
+    grabbedValue.style.color =  'rgb(128 195 217)';
+    grabbedValue.classList.add('achieved');
+    achievements.push(images[index]);
 }
-
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     let hasMoved = false;
-
-    if (keyPresses.q) {
-        grab();
-    }
-
     if (keyPresses.w) {
         moveCharacter(0, -MOVEMENT_SPEED, FACING_UP);
         hasMoved = true;
@@ -123,7 +123,6 @@ function gameLoop() {
         moveCharacter(0, MOVEMENT_SPEED, FACING_DOWN);
         hasMoved = true;
     }
-
     if (keyPresses.a) {
         moveCharacter(-MOVEMENT_SPEED, 0, FACING_LEFT);
         hasMoved = true;
@@ -131,7 +130,6 @@ function gameLoop() {
         moveCharacter(MOVEMENT_SPEED, 0, FACING_RIGHT);
         hasMoved = true;
     }
-
     if (hasMoved) {
         frameCount++;
         if (frameCount >= FRAME_LIMIT) {
@@ -141,16 +139,15 @@ function gameLoop() {
                 currentLoopIndex = 0;
             }
         }
+    } else if (keyPresses.q) {
+        grab();
     }
-
     if (!hasMoved) {
         currentLoopIndex = 0;
     }
-
     drawFrame(CYCLE_LOOP[currentLoopIndex], currentDirection, positionX, positionY);
     window.requestAnimationFrame(gameLoop);
 }
-
 function moveCharacter(deltaX, deltaY, direction) {
     if (positionX + deltaX > 0 && positionX + SCALED_WIDTH + deltaX < canvas.width) {
         positionX += deltaX;
