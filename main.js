@@ -43,6 +43,7 @@ freedom_image.positionX = 330;
 fun_image.positionX = 945;
 modesty_image.positionX = 950;
 teamSpirit_image.positionX = 1275;
+finish_image.positionX = 630;
 honesty_image.positionY = 450;
 boldness_image.positionY = 320;
 trust_image.positionY = 400;
@@ -50,6 +51,7 @@ freedom_image.positionY = 265;
 fun_image.positionY = 470;
 modesty_image.positionY = 240;
 teamSpirit_image.positionY = 195;
+finish_image.positionY = 540;
 honesty_image.dialog = { src:'./images/Kilg.png', text: 'Well done!'};
 boldness_image.dialog = { src:'./images/Bosklopper.png', text: 'Nice!'};
 trust_image.dialog = { src:'./images/Berkhout.png', text: 'Well done!'};
@@ -108,7 +110,9 @@ function grab() {
     grabbedValue.style.color =  'rgb(128 195 217)';
     grabbedValue.classList.add('achieved');
     achievements.push(images[index]);
+
 }
+
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let hasMoved = false;
